@@ -1,0 +1,8 @@
+pandas
+numpy
+seaborn
+pydantic_settings
+scikit-learn
+matplotlib
+requests
+#-e .
