@@ -3,7 +3,7 @@ import sys
 import os
 import pickle
 from typing import Any, Dict, List
-
+import time
 import pandas as pd
 from src.config.secrets import settings, project_root
 from src.exception import CustomException
@@ -31,7 +31,7 @@ class DataCollector:
         try:
             team_dict = self._get("teams", {"league": league, "season": season})
             team_data = team_dict.get("response", [])
-            team_df = pd.DataFrame([item["team"] for item in team_data])
+            team_df = pd.DataFrame([item["team"] for item in team_data]).set_index('id')
             logging.info("Teams fetched successfully")
             return team_df
         except Exception as e:
@@ -54,6 +54,8 @@ class DataCollector:
                     f"{type(stats_data).__name__}. Using empty dict."
                 )
                 stats_data = {}
+            if stats_dict['errors'] is not []:
+                logging.warning(f"Following Error Occured {stats_dict['errors']}")
             logging.info(f"Statistics fetched successfully for team_id={team_id} season={season}")
             return stats_data
         except Exception as e:
@@ -63,7 +65,7 @@ class DataCollector:
     def save_data(self, season: int) -> None:
         try:
             teams_df = self.fetch_teams(season)
-            team_ids: List[int] = teams_df["id"].tolist()
+            team_ids = teams_df["id"].tolist()
             team_stats: List[Dict[str, Any]] = []
 
             base_dir = os.path.join(str(project_root()), "data", str(season))
@@ -73,6 +75,7 @@ class DataCollector:
             logging.info(f"Teams saved for season {season}")
 
             for team_id in team_ids:
+                time.sleep(5)  # To respect API rate limits
                 stats = self.fetch_team_stats(team_id, season)
 
                 def _sum_cards(color: str) -> int:
@@ -115,9 +118,18 @@ class DataCollector:
 if __name__ == "__main__":
     try:
         collector = DataCollector()
-        seasons = [2024, 2023]
+        collector.save_data(2024, 2023, 2022)
+    except Exception as e:
+        logging.error(f"Error in main execution: {e}")
+        raise CustomException(e, sys)
+
+# Still Buggy, Throws random errors after 1 season
+#if __name__ == "__main__":
+#    try:
+        collector = DataCollector()     
+        seasons = 2021
         for season in seasons:
             collector.save_data(season)
-    except Exception as e:
+#    except Exception as e:
         logging.error(f"Error in main execution: {e}")
         raise CustomException(e, sys)
