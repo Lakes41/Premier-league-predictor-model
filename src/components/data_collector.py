@@ -1,120 +1,116 @@
 import requests
 import sys
 import os
-import pandas as pd
 import pickle
-from src.config.secrets import settings
+from typing import Any, Dict, List
+
+import pandas as pd
+from src.config.secrets import settings, project_root
 from src.exception import CustomException
 from src.logger import logging
+
 
 class DataCollector:
     def __init__(self):
         self.api_key = settings.API_KEY
         self.api_base_url = settings.API_BASE_URL
 
+    def _get(self, endpoint: str, params: Dict[str, Any]) -> Dict[str, Any]:
+        try:
+            url = f"{self.api_base_url}/{endpoint}"
+            headers = {"x-apisports-key": self.api_key}
+            logging.info(f"GET {url} params={params}")
+            resp = requests.get(url=url, headers=headers, params=params, timeout=30)
+            resp.raise_for_status()
+            return resp.json()
+        except Exception as e:
+            logging.error(f"Request failed on {endpoint}: {e}")
+            raise CustomException(e, sys)
+
     def fetch_teams(self, season: int, league: int = 39) -> pd.DataFrame:
         try:
-            # Define the API endpoint and parameters
-            endpoint = "teams"
-            params = {
-                "league": league,
-                "season": season
-            }
-            url = f"{self.api_base_url}/{endpoint}"
-            headers = {'x-apisports-key': self.api_key}
-            logging.info(f"Fetching data from {url} with params {params}")
-            
-            # Make the API GET request
-            response_t = requests.get(url= url, headers=headers, params=params)
-            if response_t.status_code == 200:
-                team_dict = response_t.json()
-                team_data = team_dict['response']
-                team_df = pd.DataFrame([team_data[i]['team'] for i in range(len(team_data))])
+            team_dict = self._get("teams", {"league": league, "season": season})
+            team_data = team_dict.get("response", [])
+            team_df = pd.DataFrame([item["team"] for item in team_data])
+            logging.info("Teams fetched successfully")
             return team_df
-            logging.info("Data fetched successfully")
-            return pd.DataFrame(data)
         except Exception as e:
-            logging.error(f"Error fetching data: {e}")
+            logging.error(f"Error fetching teams: {e}")
             raise CustomException(e, sys)
-        
-        def fetch_team_stats(self, team_id: int, season: int, league: int = 39) -> Response:
-            try:
-                # Define the API endpoint and parameters
-                endpoint = "teams/statistics"
-                params = {
-                    "league": league,
-                    "season": season,
-                    "team": team_id
+
+    def fetch_team_stats(self, team_id: int, season: int, league: int = 39) -> Dict[str, Any]:
+        try:
+            stats_dict = self._get(
+                "teams/statistics", {"league": league, "season": season, "team": team_id}
+            )
+            stats_data = stats_dict.get("response", {})
+            if isinstance(stats_data, list):
+                stats_data = stats_data[0] if stats_data and isinstance(stats_data[0], dict) else {}
+            if stats_data is None:
+                stats_data = {}
+            if not isinstance(stats_data, dict):
+                logging.warning(
+                    f"Unexpected statistics response type for team_id={team_id}, season={season}: "
+                    f"{type(stats_data).__name__}. Using empty dict."
+                )
+                stats_data = {}
+            logging.info(f"Statistics fetched successfully for team_id={team_id} season={season}")
+            return stats_data
+        except Exception as e:
+            logging.error(f"Error fetching team stats: {e}")
+            raise CustomException(e, sys)
+
+    def save_data(self, season: int) -> None:
+        try:
+            teams_df = self.fetch_teams(season)
+            team_ids: List[int] = teams_df["id"].tolist()
+            team_stats: List[Dict[str, Any]] = []
+
+            base_dir = os.path.join(str(project_root()), "data", str(season))
+            os.makedirs(base_dir, exist_ok=True)
+            with open(os.path.join(base_dir, f"teams_{season}.pkl"), "wb") as f:
+                pickle.dump(teams_df, f)
+            logging.info(f"Teams saved for season {season}")
+
+            for team_id in team_ids:
+                stats = self.fetch_team_stats(team_id, season)
+
+                def _sum_cards(color: str) -> int:
+                    buckets = stats.get("cards", {}).get(color, {})
+                    return sum(int(bucket.get("total") or 0) for bucket in buckets.values())
+
+                team_obs = {
+                    "id": stats.get("team", {}).get("id"),
+                    "form": stats.get("form"),
+                    "fixture_hw": stats.get("fixtures", {}).get("wins", {}).get("home"),
+                    "fixtures_aw": stats.get("fixtures", {}).get("wins", {}).get("away"),
+                    "fixtures_hl": stats.get("fixtures", {}).get("loses", {}).get("home"),
+                    "fixtures_al": stats.get("fixtures", {}).get("loses", {}).get("away"),
+                    "fixtures_hd": stats.get("fixtures", {}).get("draws", {}).get("home"),
+                    "fixtures_ad": stats.get("fixtures", {}).get("draws", {}).get("away"),
+                    "goals_h": stats.get("goals", {}).get("for", {}).get("total", {}).get("home"),
+                    "goals_a": stats.get("goals", {}).get("for", {}).get("total", {}).get("away"),
+                    "conceded_h": stats.get("goals", {}).get("against", {}).get("total", {}).get("home"),
+                    "conceded_a": stats.get("goals", {}).get("against", {}).get("total", {}).get("away"),
+                    "clean_sheet_h": stats.get("clean_sheet", {}).get("home"),
+                    "clean_sheet_a": stats.get("clean_sheet", {}).get("away"),
+                    "fts_h": stats.get("failed_to_score", {}).get("home"),
+                    "fts_a": stats.get("failed_to_score", {}).get("away"),
+                    "penalty_scored": stats.get("penalty", {}).get("scored", {}).get("total"),
+                    "penalty_missed": stats.get("penalty", {}).get("missed", {}).get("total"),
+                    "cards_yellow": _sum_cards("yellow"),
+                    "cards_red": _sum_cards("red"),
                 }
-                url = f"{self.api_base_url}/{endpoint}"
-                headers = {'x-apisports-key': self.api_key}
-                logging.info(f"Fetching data from {url} with params {params}")
-                
-                # Make the API GET request
-                response_s = requests.get(url= url, headers=headers, params=params)
-                if response_s.status_code == 200:
-                    stats_dict = response_s.json()
-                    stats_data = stats_dict['response']
-                return stats_data
-                logging.info("Data fetched successfully")
-                
-            except Exception as e:
-                logging.error(f"Error fetching data: {e}")
-                raise CustomException(e, sys)
-        
-        def save_data(self, season: int) -> None:
-            try:
-                # Fetch team data
-                teams_df = self.fetch_teams(season)
-                team_ids = teams_df['id'].tolist()
-                team_stats = []
-                
-                # Save team data to a pickle file   
-                with open(f"../data/teams_{season}.pkl", "wb") as f:
-                    pickle.dump(teams_df, f)
-                logging.info(f"Data saved successfully for season {season}")
-                
-                for team_id in team_ids:
-                    # Fetch team stats for id
-                    stats = self.fetch_team_stats(team_id, season)
-                    
-                    # Grab Relevvant data
-                    team_obs = {
-                        id : stats['team']['id'],                        
-                        form: stats['form'],
-                        
-                        fixture_hw : stats['fixtures']['wins']['home'],
-                        fixtures_aw : stats['fixtures']['wins']['away'],
-                        fixtures_hl : stats['fixtures']['loses']['home'],
-                        fixtures_al : stats['fixtures']['loses']['away'],
-                        fixtures_hd : stats['fixtures']['draws']['home'],
-                        fixtures_ad : stats['fixtures']['draws']['away'],
 
-                        goals_h : stats['goals']['for']['total']['home'],
-                        goals_a : stats['goals']['for']['total']['away'],
-                        conceded_h : stats['goals']['against']['total']['home'],
-                        conceded_a : stats['goals']['against']['total']['away'],
+                team_stats.append(team_obs)
 
-                        clean_sheet_h : stats['clean_sheet']['home'],
-                        clean_sheet_a : stats['clean_sheet']['away'],
-                        
-                        fts_h : stats['failed_to_score']['home'],
-                        fts_a : stats['failed_to_score']['away'],
-                        
-                        penalty_scored : stats['penalty']['scored']['total'],
-                        penalty_missed : stats['penalty']['missed']['total'],
-                        
-                        cards_yellow : stats['cards']['yellow']['total'],
-                        cards_red : stats['cards']['red']['total']}
-
-                    team_stats.append(team_obs)
-                team_df = pd.DataFrame(team_stats)
-                with open(f"../data/team_stats_{season}.pkl", "wb") as f:
-                    pickle.dump(stats_data, f)
-                logging.info(f"Data saved successfully for season {season}")
-            except Exception as e:
-                logging.error(f"Error saving data: {e}")
-                raise CustomException(e, sys)
+            team_df = pd.DataFrame(team_stats)
+            with open(os.path.join(base_dir, f"team_stats_{season}.pkl"), "wb") as f:
+                pickle.dump(team_df, f)
+            logging.info(f"Team stats saved for season {season}")
+        except Exception as e:
+            logging.error(f"Error saving data: {e}")
+            raise CustomException(e, sys)
 
 if __name__ == "__main__":
     try:
@@ -125,4 +121,3 @@ if __name__ == "__main__":
     except Exception as e:
         logging.error(f"Error in main execution: {e}")
         raise CustomException(e, sys)
-    

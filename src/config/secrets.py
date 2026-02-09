@@ -2,32 +2,35 @@
 
 from pathlib import Path
 
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-def env_path(filename: str = ".env") -> Path:
+def project_root() -> Path:
     """
-    Returns an absolute Path to the env file.
+    Project root = folder that contains 'src/'.
+    This file is at: <root>/src/config/secrets.py
+    So parents[2] is the project root.
+    """
+    return Path(__file__).resolve().parents[2]
 
-    This resolves relative to this file's directory so it works
-    regardless of where you run the app from.
-    """
-    return Path(__file__).resolve().parent / filename
+
+ENV_PATH = project_root() / ".env"
+
+# Deterministic: load .env into process env once, before Settings() is created
+load_dotenv(dotenv_path=ENV_PATH, override=False)
 
 
 class Settings(BaseSettings):
-    """
-    Project settings loaded from environment variables and an optional .env file.
-    """
-
     API_KEY: str
     API_BASE_URL: str
 
     model_config = SettingsConfigDict(
-        env_file=env_path(".env"),
+        # Keep this too, but load_dotenv is the hard guarantee
+        env_file=str(ENV_PATH),
         env_file_encoding="utf-8",
-        extra="ignore",          # ignore any unexpected env vars
-        case_sensitive=False,    # set True if you want strict casing
+        extra="ignore",
+        case_sensitive=False,
     )
 
 

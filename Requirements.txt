@@ -5,4 +5,5 @@ pydantic_settings
 scikit-learn
 matplotlib
 requests
+python-dotenv
 #-e .
