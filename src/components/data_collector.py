@@ -54,8 +54,8 @@ class DataCollector:
                     f"{type(stats_data).__name__}. Using empty dict."
                 )
                 stats_data = {}
-            if stats_dict['errors'] is not []:
-                logging.warning(f"Following Error Occured {stats_dict['errors']}")
+            #if stats_dict['errors'] != []:
+                #logging.warning(f"Following Error Occured {stats_dict['errors']}")
             logging.info(f"Statistics fetched successfully for team_id={team_id} season={season}")
             return stats_data
         except Exception as e:
@@ -65,7 +65,7 @@ class DataCollector:
     def save_data(self, season: int) -> None:
         try:
             teams_df = self.fetch_teams(season)
-            team_ids = teams_df["id"].tolist()
+            team_ids = teams_df.index.tolist()
             team_stats: List[Dict[str, Any]] = []
 
             base_dir = os.path.join(str(project_root()), "data", str(season))
@@ -115,10 +115,11 @@ class DataCollector:
             logging.error(f"Error saving data: {e}")
             raise CustomException(e, sys)
 
+# For making single season data requests
 if __name__ == "__main__":
     try:
         collector = DataCollector()
-        collector.save_data(2024, 2023, 2022)
+        collector.save_data(2022)
     except Exception as e:
         logging.error(f"Error in main execution: {e}")
         raise CustomException(e, sys)
@@ -126,10 +127,10 @@ if __name__ == "__main__":
 # Still Buggy, Throws random errors after 1 season
 #if __name__ == "__main__":
 #    try:
-        collector = DataCollector()     
-        seasons = 2021
-        for season in seasons:
-            collector.save_data(season)
+#        collector = DataCollector()     
+#        seasons = [2024, 2023, 2022]
+#        for season in seasons:
+#            collector.save_data(season)
 #    except Exception as e:
-        logging.error(f"Error in main execution: {e}")
-        raise CustomException(e, sys)
+#        logging.error(f"Error in main execution: {e}")
+#        raise CustomException(e, sys)
