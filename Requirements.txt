@@ -6,4 +6,5 @@ scikit-learn
 matplotlib
 requests
 python-dotenv
+beautifulsoup4
 #-e .
