@@ -116,21 +116,21 @@ class DataCollector:
             raise CustomException(e, sys)
 
 # For making single season data requests
-if __name__ == "__main__":
-    try:
-        collector = DataCollector()
-        collector.save_data(2022)
-    except Exception as e:
-        logging.error(f"Error in main execution: {e}")
-        raise CustomException(e, sys)
-
-# Still Buggy, Throws random errors after 1 season
 #if __name__ == "__main__":
 #    try:
-#        collector = DataCollector()     
-#        seasons = [2024, 2023, 2022]
-#        for season in seasons:
-#            collector.save_data(season)
+#        collector = DataCollector()
+#        collector.save_data(2022)
 #    except Exception as e:
 #        logging.error(f"Error in main execution: {e}")
 #        raise CustomException(e, sys)
+
+# Fully functional
+if __name__ == "__main__":
+    try:
+        collector = DataCollector()     
+        seasons = [2024, 2023, 2022]
+        for season in seasons:
+            collector.save_data(season)
+    except Exception as e:
+        logging.error(f"Error in main execution: {e}")
+        raise CustomException(e, sys)
