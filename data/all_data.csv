@@ -1,0 +1,61 @@
+name,code,country,founded,national,logo,id,form,fixture_hw,fixtures_aw,fixtures_hl,fixtures_al,fixtures_hd,fixtures_ad,goals_h,goals_a,conceded_h,conceded_a,clean_sheet_h,clean_sheet_a,fts_h,fts_a,penalty_scored,penalty_missed,cards_yellow,cards_red,year
+Manchester United,MUN,England,1878,False,https://media.api-sports.io/football/teams/33.png,33,LLWWWWLWDWDWLWWWWWDLWDWWLDLWWWDWLLWWWW,15,8,1,8,3,3,36,22,10,33,11,6,2,5,3,0,78,2,2022
+Newcastle,NEW,England,1892,False,https://media.api-sports.io/football/teams/34.png,34,WDDDLDDWWDWWWWWWDDWDDDLLWWWWWLWWWLDWDD,11,8,2,3,6,8,36,32,14,19,9,5,5,6,6,0,61,1,2022
+Bournemouth,BOU,England,1899,False,https://media.api-sports.io/football/teams/35.png,35,WLLLDWDDWDLLLLWLLLLDLDWLLWLWLWWLWWLLLL,6,5,9,12,4,2,20,17,28,43,5,3,8,10,0,0,68,0,2022
+Fulham,FUL,England,1879,False,https://media.api-sports.io/football/teams/36.png,36,DDWLWLWLLDWWDLLWWWWLLDWWDLLLLWWLLLWWDL,8,7,6,10,5,2,31,24,29,24,3,6,4,5,5,0,80,1,2022
+Wolves,WOL,England,1877,False,https://media.api-sports.io/football/teams/39.png,39,LDLDDWLLLWLLDLLWLDWLWWLDLWLLDWWLWLWLDL,9,2,7,12,3,5,19,12,20,38,10,1,6,9,3,0,85,6,2022
+Liverpool,LIV,England,1892,False,https://media.api-sports.io/football/teams/40.png,40,DDLWWDDLWWLLWWWWLLDLWWDWWLLDDWWWWWWWDD,13,6,1,8,5,5,46,29,17,30,9,5,1,7,2,0,57,1,2022
+Southampton,SOU,England,1885,False,https://media.api-sports.io/football/teams/41.png,41,LDWLWLLLLDWDLLLLLLWLLLWLWDLDLLLDLLLLLD,2,4,12,13,5,2,19,17,37,36,1,3,7,8,2,0,73,0,2022
+Arsenal,ARS,England,1886,False,https://media.api-sports.io/football/teams/42.png,42,WWWWWLWWWWDWWWWWDWWLDLWWWWWWWDDDLWWLLW,14,12,2,4,3,3,53,35,25,18,4,10,2,2,3,0,51,0,2022
+Everton,EVE,England,1878,False,https://media.api-sports.io/football/teams/45.png,45,LLDDDDWWLLLWDLLLDLLLWLWLLDWDDLLDLDWLDW,6,2,10,8,3,9,16,18,27,30,7,2,5,9,3,0,81,2,2022
+Leicester,LEI,England,1884,False,https://media.api-sports.io/football/teams/46.png,46,DLLLLLLWLDWWLWWLLLLDWWLLLLDLLLLWDDLLDW,5,4,10,12,4,3,23,28,27,41,3,4,8,4,3,0,63,2,2022
+Tottenham,TOT,England,1882,False,https://media.api-sports.io/football/teams/47.png,47,WDWWDWWLWWLLWLWDLWLLWWLWWLWDDWLLDLWLLW,12,6,6,8,1,5,37,33,25,38,6,4,2,2,5,0,77,3,2022
+West Ham,WES,England,1895,False,https://media.api-sports.io/football/teams/48.png,48,LLLWDLLWWDLWLLLLLDLWDDLWLDWLWDWLLLWLWL,8,3,7,13,4,3,26,16,24,31,6,3,4,9,6,0,44,0,2022
+Chelsea,CHE,England,1905,False,https://media.api-sports.io/football/teams/49.png,49,WDLWLWWWWDDLLLWDLLWDDDLLWWDLDLLLLWDLLD,6,5,6,10,7,4,20,18,19,28,6,4,7,7,3,0,81,3,2022
+Manchester City,MCI,England,1880,False,https://media.api-sports.io/football/teams/50.png,50,WWDWWDWWWLWWWLWDWLWWLWWDWWWWWWWWWWWWDL,17,11,1,4,1,4,60,34,17,16,7,6,0,3,9,0,44,1,2022
+Brighton,BRI,England,1901,False,https://media.api-sports.io/football/teams/51.png,51,WDWWLWDLLDLWWLWLWWDWDLWDWDWLWLWWLWLWDL,10,8,5,7,4,4,37,35,21,32,9,3,4,1,6,0,59,0,2022
+Crystal Palace,CRY,England,1861,False,https://media.api-sports.io/football/teams/52.png,52,LDWLDDLWDWLWWLLWLLDDLDDDLLLLWWWDLWLWDD,7,4,5,10,7,5,21,19,23,26,5,4,7,9,1,0,83,3,2022
+Brentford,BRE,England,1889,False,https://media.api-sports.io/football/teams/55.png,55,DWLDDWLDLWDLDDWDWWWDWDDWLWDDLLLDWWLWWW,10,5,2,7,7,7,35,23,18,28,7,5,2,7,7,0,57,1,2022
+Leeds,LEE,England,1919,False,https://media.api-sports.io/football/teams/63.png,63,WDWLDLDLLLLWWLLDDLDLDLLWLDWLWLLLDLLDLL,5,2,7,14,7,3,26,22,37,41,4,1,4,6,1,0,89,3,2022
+Nottingham Forest,NOT,England,1865,False,https://media.api-sports.io/football/teams/65.png,65,LWDLLLLLDLDWLDWLDWWDWLDLDLLDLLLLWLWDWD,8,1,5,13,6,5,27,11,24,44,6,2,2,10,3,0,84,0,2022
+Aston Villa,AST,England,1874,False,https://media.api-sports.io/football/teams/66.png,66,LWLLLDWDDLLWLWWLWDWWLLLWWDWWWWWDWLLWDW,12,6,5,8,2,5,33,18,21,25,7,5,2,6,3,0,80,1,2022
+Manchester United,MUN,England,1878,False,https://media.api-sports.io/football/teams/33.png,33,WLWLLWLWWLWWWLWLDLWLDWWWWLLWDLDDWDLLWW,10,8,6,8,3,3,31,26,28,30,4,5,4,5,6,0,83,1,2023
+Newcastle,NEW,England,1892,False,https://media.api-sports.io/football/teams/34.png,34,WLLLWWWDWDWLWWLLWLLLLWDWDLWLWDWWLWWDLW,12,6,3,11,4,2,49,36,22,40,8,2,0,5,8,0,78,1,2023
+Bournemouth,BOU,England,1899,False,https://media.api-sports.io/football/teams/35.png,35,DLLDDLLLLWLWWDWWWWLLDDLDLWDWWWLDLWWLLL,7,6,6,10,6,3,27,27,28,39,5,4,5,2,2,0,79,3,2023
+Fulham,FUL,England,1879,False,https://media.api-sports.io/football/teams/36.png,36,WLDLWDLWLDLLWLWWLLLWLDDWLWWLWDLLWLDDLW,9,4,8,9,2,6,31,24,24,37,6,4,7,6,2,0,84,4,2023
+Wolves,WOL,England,1877,False,https://media.api-sports.io/football/teams/39.png,39,LLWLLDWDWDLWLLWDLWWWDLWLWWLWLDLDLLWLLL,8,5,8,10,3,4,26,24,30,35,3,2,3,6,4,0,103,4,2023
+Liverpool,LIV,England,1892,False,https://media.api-sports.io/football/teams/40.png,40,DWWWWWLDWWDWDWWWDDWWWWLWWWWDWWDLWLDWDW,15,9,1,3,3,7,49,37,17,24,6,4,2,1,6,0,69,5,2023
+Arsenal,ARS,England,1886,False,https://media.api-sports.io/football/teams/42.png,42,WWDWWDWWDWLWWWWLWDLLWWWWWWWWDWWLWWWWWW,15,13,2,3,2,3,48,43,16,13,7,11,2,3,10,0,64,2,2023
+Burnley,BUR,England,1882,False,https://media.api-sports.io/football/teams/44.png,44,LLLDLLWLLLLLLWLDLWLLDLDLLLLDWDDLDWDLLL,2,3,13,11,4,5,19,22,43,35,1,1,7,5,3,0,77,7,2023
+Everton,EVE,England,1878,False,https://media.api-sports.io/football/teams/45.png,45,LLLDLWLWLWDWLWWWWLLLDDDLDDLLLDWLWWWDWL,8,5,7,9,4,5,22,18,18,33,9,4,5,7,2,0,82,1,2023
+Tottenham,TOT,England,1882,False,https://media.api-sports.io/football/teams/47.png,47,DWWWWDWWWWLLLDLWWWLWDWDWLWWLWDWLLLLWLW,13,7,6,6,0,6,38,36,27,34,2,5,1,3,2,0,92,4,2023
+West Ham,WES,England,1895,False,https://media.api-sports.io/football/teams/48.png,48,DWWWLLWDLLLWWDWLWWWDDDLLLWWDDLDWLLDLWL,7,7,4,10,8,2,31,29,28,46,4,1,4,4,4,0,82,3,2023
+Chelsea,CHE,England,1905,False,https://media.api-sports.io/football/teams/49.png,49,DLWLDLWWDLWDLWLLWLWWWLLWDDWDWDWLDWWWWW,11,7,4,7,4,5,44,33,26,37,6,2,3,3,11,0,109,4,2023
+Manchester City,MCI,England,1880,False,https://media.api-sports.io/football/teams/50.png,50,WWWWWWLLWWWDDDLWDWWWWWWDWWWDDWWWWWWWWW,14,14,0,3,5,2,51,45,16,18,6,7,1,2,9,0,53,2,2023
+Brighton,BRI,England,1901,False,https://media.api-sports.io/football/teams/51.png,51,WWLWWWLDLDDDWLWDLDWDDLWLWDLWLDLDLLWDLL,8,4,5,9,6,6,30,25,27,35,3,3,4,6,5,0,90,3,2023
+Crystal Palace,CRY,England,1861,False,https://media.api-sports.io/football/teams/52.png,52,WLDWLDWDLLWLLDLLDDLWLWLLDWLDDLLWWWDWWW,8,5,7,8,4,6,37,20,26,32,6,4,4,3,4,0,73,2,2023
+Brentford,BRE,England,1889,False,https://media.api-sports.io/football/teams/55.png,55,DWDDLLDLWWWLLWLLLLLWLLWLLLDLLDDDWWLDWL,5,5,7,12,7,2,29,27,34,31,4,3,3,5,3,0,89,2,2023
+Sheffield Utd,SHE,England,1889,False,https://media.api-sports.io/football/teams/62.png,62,LLLDLLLLLLWDLLLWLDLLDLLWLLLDDLDLLLLLLL,2,1,13,15,4,3,19,16,57,47,1,0,7,8,5,0,101,5,2023
+Nottingham Forest,NOT,England,1865,False,https://media.api-sports.io/football/teams/65.png,65,LWLWDLDDDLWLLLLDLLWWLLDLWLLLDDWLDLLWLW,5,4,9,11,5,4,27,22,30,37,2,2,4,6,1,0,82,3,2023
+Aston Villa,AST,England,1874,False,https://media.api-sports.io/football/teams/66.png,66,LWWLWWWDWWLWWDWWWDLWDLWLWWWLDWLDWWDLDL,12,8,3,7,4,4,48,28,28,33,4,4,1,5,4,0,94,2,2023
+Luton,LUT,England,1885,False,https://media.api-sports.io/football/teams/1359.png,1359,LLLLDWLLDLDLWLLLWWLDWDLLLLDLDLLWLLLDLL,4,2,11,13,4,4,28,24,37,48,2,0,1,4,5,0,71,0,2023
+Manchester United,MUN,England,1878,False,https://media.api-sports.io/football/teams/33.png,33,WLLWDLDWLDWDWLLWLLLDWLWLLDWDWLDLLDLLLW,7,4,9,9,3,6,23,21,28,26,5,5,8,7,4,0,86,3,2024
+Newcastle,NEW,England,1892,False,https://media.api-sports.io/football/teams/34.png,34,WDWWLDDLLWWLDDLWWWWWWLWLLWLWWWWWLWDWLL,12,8,5,7,2,4,40,28,20,27,8,5,3,4,5,1,68,1,2024
+Bournemouth,BOU,England,1899,False,https://media.api-sports.io/football/teams/35.png,35,DDWLLWLWDWLLWWWDWDDWDWWLWLLDLLDWDDWLLW,8,7,7,5,4,7,23,35,16,30,7,2,5,3,6,1,97,3,2024
+Fulham,FUL,England,1879,False,https://media.api-sports.io/football/teams/36.png,36,LWDDWWLLDWWLDWDDDWDDLWLWWLWLWLWLLWLLWL,7,8,7,7,5,4,27,27,30,24,2,3,4,3,3,1,80,2,2024
+Wolves,WOL,England,1877,False,https://media.api-sports.io/football/teams/39.png,39,LLDLLLLLDDWWLLLLWWDLLLLWLWLDWWWWWWLLLD,6,6,10,10,3,3,27,27,32,37,5,3,3,4,0,0,79,2,2024
+Liverpool,LIV,England,1892,False,https://media.api-sports.io/football/teams/40.png,40,WWWLWWWWDWWWWDDWWWDDWWWDWDWWWWLWWWLDLD,14,11,1,3,4,5,42,44,16,25,6,8,1,0,9,0,67,3,2024
+Southampton,SOU,England,1885,False,https://media.api-sports.io/football/teams/41.png,41,LLLLDLLLLWLLDLLLDLLLLLLWLLLLLDLLDLLDLL,1,1,15,15,3,3,13,13,47,39,2,1,8,8,0,2,89,3,2024
+Arsenal,ARS,England,1886,False,https://media.api-sports.io/football/teams/42.png,42,WWDWDWWLDLDWWWDDWWWDWDWWWLDDWWDDWDLDWW,11,9,2,2,6,8,35,34,17,17,7,6,2,3,2,0,70,6,2024
+Everton,EVE,England,1878,False,https://media.api-sports.io/football/teams/45.png,45,LLLLDWDWDLDDLWDDDLLLWWWDWDDDDLDWLLDWWW,5,6,5,7,9,6,26,16,23,21,6,6,7,8,2,0,82,2,2024
+Leicester,LEI,England,1884,False,https://media.api-sports.io/football/teams/46.png,46,DLLDDLWWLDLLLWDLLLLLLLWLLLLLLLLDLLWDWL,4,2,12,13,3,4,15,18,34,46,3,0,9,8,2,1,87,0,2024
+Tottenham,TOT,England,1882,False,https://media.api-sports.io/football/teams/47.png,47,DWLLWWLWLWLWDLLWLLDLLLLWWWLDLLWLLLDLLL,6,5,10,12,3,2,35,29,35,30,2,4,3,6,3,1,72,1,2024
+West Ham,WES,England,1895,False,https://media.api-sports.io/football/teams/48.png,48,LWLDLDWLWLDWLLWDDWLLWLDLLWWLDLDLDLDWLW,5,6,9,8,5,5,23,23,34,28,2,5,6,2,3,0,82,3,2024
+Chelsea,CHE,England,1905,False,https://media.api-sports.io/football/teams/49.png,49,LWDWWWDLWDDWWWWWDLLDDWLWLLWWLWDDWWWLWW,12,8,2,7,5,4,35,29,18,25,6,5,1,6,4,1,101,2,2024
+Manchester City,MCI,England,1880,False,https://media.api-sports.io/football/teams/50.png,50,WWWWDDWWWLLLLWDLLDWWDWWLWLWLDWDWWWWDWW,13,8,3,6,3,5,43,29,23,21,5,8,2,4,3,1,59,2,2024
+Brighton,BRI,England,1901,False,https://media.api-sports.io/football/teams/51.png,51,WWDDDLWWDLWWDLDLDDDDWWLLWWWWDLLDLWDWWW,8,8,3,6,8,5,30,36,26,33,3,5,4,1,7,0,78,3,2024
+Crystal Palace,CRY,England,1861,False,https://media.api-sports.io/football/teams/52.png,52,LLDDDLLLWDLDDWDWLDWDWWLWLWWWDWLLDDDWWD,6,7,6,5,7,7,24,27,26,25,4,7,5,3,3,1,80,4,2024
+Brentford,BRE,England,1889,False,https://media.api-sports.io/football/teams/55.png,55,WLWLLDWLWLWDWLWLLDLWDLWLWWDLWLDDWWWWLD,9,7,6,8,4,4,40,26,35,22,1,7,5,3,5,1,62,1,2024
+Ipswich,IPS,England,1878,False,https://media.api-sports.io/football/teams/57.png,57,LLDDDDLLLDWDLLLWLLWDLLLLDLLLLWLDLLDLLL,1,3,14,10,4,6,14,22,44,38,1,1,8,6,2,0,92,5,2024
+Nottingham Forest,NOT,England,1865,False,https://media.api-sports.io/football/teams/65.png,65,DWDWDLDWWWLLWLWWWWWWDWLWLLDWWWLLWLDDWL,9,10,5,6,5,3,26,32,16,30,8,5,5,3,3,0,90,2,2024
+Aston Villa,AST,England,1874,False,https://media.api-sports.io/football/teams/66.png,66,WLWWWDDWDLLDLWWLWLDWWDDLDDWLWWWWWLWWWL,11,8,1,9,7,2,34,24,20,31,4,5,2,5,3,3,76,4,2024
